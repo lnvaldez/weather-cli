@@ -51,3 +51,8 @@ class WeatherBase:
 
     def process_air_data(self, data: Dict[str, Any]):
         self.air_quality = data["list"][0]["main"]["aqi"]
+
+
+class WeatherLocation(WeatherBase):
+    def __init__(self, city_name: str):
+        super().__init__()
