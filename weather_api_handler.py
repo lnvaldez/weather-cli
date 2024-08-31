@@ -24,3 +24,7 @@ class WeatherApi:
     def get_weather_by_city(self, city: str) -> Dict[str, Any]:
         url = f"{self.BASE_URLS["weather"]}appid={self.WEATHER_API_KEY}&q={city}&units=metric"
         return self.fetch_data(url=url)
+
+    def get_weather_by_gcs(self, lat: float, lon: float) -> Dict[str, Any]:
+        url = f"{self.BASE_URLS["weather"]}appid={self.WEATHER_API_KEY}&lat={lat}&lon={lon}&units=metric"
+        return self.fetch_data(url=url)
