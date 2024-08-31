@@ -48,3 +48,6 @@ class WeatherBase:
                 "visibility": day_data["visibility"],
             }
             self.forecast.append(forecast_entry)
+
+    def process_air_data(self, data: Dict[str, Any]):
+        self.air_quality = data["list"][0]["main"]["aqi"]
