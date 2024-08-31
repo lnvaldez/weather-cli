@@ -1,5 +1,6 @@
 from typing import Dict, Any
 from datetime import datetime
+from weather_api_handler import WeatherApi
 
 
 class WeatherBase:
@@ -56,3 +57,15 @@ class WeatherBase:
 class WeatherLocation(WeatherBase):
     def __init__(self, city_name: str):
         super().__init__()
+        self.city_name = city_name
+        self.fetch_all_data()
+
+    def fetch_all_data(self):
+        current_data = WeatherApi.get_weather_by_city(self.city_name)
+        self.lat = current_data["coord"]["lat"]
+        self.lat = current_data["coord"]["lon"]
+        lat_lon_data = WeatherApi.get_forecast(self.lat, self.lon)
+
+        self.process_current_data(current_data)
+        self.process_forecast_data(lat_lon_data)
+        self.process_air_data(lat_lon_data)
