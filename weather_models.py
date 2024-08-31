@@ -30,3 +30,21 @@ class WeatherBase:
                 "%Y-%m-%d %H:%M:%S"
             ),
         }
+
+    def process_forecast_data(self, data: Dict[str, Any]):
+        self.forecast = []
+        forecast_list = data["list"]
+
+        for i in range(0, len(forecast_list, 8)):
+            day_data = forecast_list[i]
+            forecast_entry = {
+                "date": day_data["dt_txt"],
+                "temp": day_data["main"]["temp"],
+                "sensation": day_data["main"]["feels_like"],
+                "description": day_data["weather"][0]["description"],
+                "humidity": day_data["main"]["humidity"],
+                "pressure": day_data["main"]["pressure"],
+                "wind_speed": day_data["wind"]["speed"],
+                "visibility": day_data["visibility"],
+            }
+            self.forecast.append(forecast_entry)
