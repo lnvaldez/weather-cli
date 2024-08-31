@@ -73,3 +73,10 @@ class WeatherLocation(WeatherBase):
         self.process_current_data(current_data)
         self.process_forecast_data(forecast_data)
         self.process_air_data(air_data)
+
+
+class Coordinate(WeatherBase):
+    def __init__(self, lat: float, lon: float):
+        super().__init()
+        self.lat = lat
+        self.lon = lon
