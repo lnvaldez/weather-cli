@@ -1,5 +1,7 @@
 import os
+import requests
 from dotenv import load_dotenv
+from typing import Dict, Any
 
 load_dotenv()
 
@@ -13,3 +15,8 @@ class WeatherApi:
         "air": "http://api.openweathermap.org/data/2.5/air_pollution?",
         "geo": "https://api.opencagedata.com/geocode/v1/json?",
     }
+
+    @staticmethod
+    def fetch_data(url: str) -> Dict[str, Any]:
+        response = requests.get(url)
+        return response.json()
