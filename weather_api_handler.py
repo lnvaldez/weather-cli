@@ -20,3 +20,7 @@ class WeatherApi:
     def fetch_data(url: str) -> Dict[str, Any]:
         response = requests.get(url)
         return response.json()
+
+    def get_weather_by_city(self, city: str) -> Dict[str, Any]:
+        url = f"{self.BASE_URLS["weather"]}appid={self.WEATHER_API_KEY}&q={city}&units=metric"
+        return self.fetch_data(url=url)
