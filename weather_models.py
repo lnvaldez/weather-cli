@@ -80,3 +80,9 @@ class Coordinate(WeatherBase):
         super().__init()
         self.lat = lat
         self.lon = lon
+        self.fetch_all_data()
+
+    def fetch_all_data(self):
+        self.process_current_data(WeatherApi.get_weather_by_gcs(self.lat, self.lon))
+        self.process_forecast_data(WeatherApi.get_forecast(self.lat, self.lon))
+        self.process_air_data(WeatherApi.get_air_quality(self.lat, self.lon))
