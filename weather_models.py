@@ -24,13 +24,16 @@ class WeatherBase:
             "pressure": main["pressure"],
             "wind_speed": wind["speed"],
             "visibility": data["visibility"],
-            "sunrise": datetime.fromtimestamp(sys["sunrise"]).strftime(
-                "%Y-%m-%d %H:%M:%S"
-            ),
-            "sunset": datetime.fromtimestamp(sys["sunset"]).strftime(
-                "%Y-%m-%d %H:%M:%S"
-            ),
         }
+
+        self.sunrise = datetime.fromtimestamp(sys["sunrise"]).strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+        self.sunset = datetime.fromtimestamp(sys["sunset"]).strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+
+        self.sun_data = {"sunrise": self.sunrise, "sunset": self.sunset}
 
     def process_forecast_data(self, data: Dict[str, Any]):
         self.forecast = []
