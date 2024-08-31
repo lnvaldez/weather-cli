@@ -64,8 +64,9 @@ class WeatherLocation(WeatherBase):
         current_data = WeatherApi.get_weather_by_city(self.city_name)
         self.lat = current_data["coord"]["lat"]
         self.lon = current_data["coord"]["lon"]
-        lat_lon_data = WeatherApi.get_forecast(self.lat, self.lon)
+        forecast_data = WeatherApi.get_forecast(self.lat, self.lon)
+        air_data = WeatherApi.get_air_quality(self.lat, self.lon)
 
         self.process_current_data(current_data)
-        self.process_forecast_data(lat_lon_data)
-        self.process_air_data(lat_lon_data)
+        self.process_forecast_data(forecast_data)
+        self.process_air_data(air_data)
