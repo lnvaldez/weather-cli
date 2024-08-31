@@ -36,7 +36,7 @@ class WeatherBase:
         self.forecast = []
         forecast_list = data["list"]
 
-        for i in range(0, len(forecast_list, 8)):
+        for i in range(0, len(forecast_list), 8):
             day_data = forecast_list[i]
             forecast_entry = {
                 "date": day_data["dt_txt"],
