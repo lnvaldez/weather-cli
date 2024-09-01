@@ -1,5 +1,7 @@
 import typer
 from src.models.weather_models import WeatherLocation, Coordinate
+from src.utils.enum import OutputFormat
+from src.utils.output_format import output_format
 
 app = typer.Typer()
 
@@ -11,17 +13,18 @@ def location(
     forecast: bool = False,
     aqi: bool = False,
     sun: bool = False,
+    format: OutputFormat = OutputFormat.json,
 ):
     weather = WeatherLocation(city_name=city)
 
     if current:
-        print(weather.current_data)
+        print(output_format(data=weather.current_data, format_type=format))
     if forecast:
-        print(weather.forecast)
+        print(output_format(data=weather.forecast, format_type=format))
     if aqi:
-        print(weather.air_quality)
+        print(output_format(data=weather.air_quality, format_type=format))
     if sun:
-        print(weather.sun_data)
+        print(output_format(data=weather.sun_data, format_type=format))
 
 
 @app.command()
