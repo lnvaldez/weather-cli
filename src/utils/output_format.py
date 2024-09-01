@@ -1,22 +1,39 @@
 import csv
 import io
 import json
-from typing import Dict, Any
+from typing import Dict, List, Union, Any
 
 
 def format_as_json(data: Dict[str, Any]) -> str:
     return json.dumps(data, indent=4)
 
 
-def format_as_csv(data: Dict[str, Any]) -> str:
+# The parameter 'data' can be either a Dict, or a List
+def format_as_csv(data: Union[Dict[str, Any], List[Any]]) -> str:
     output = io.StringIO()
-    writer = csv.DictWriter(output, fieldnames=data.keys())
-    writer.writeheader()
-    writer.writerow(data)
+    if isinstance(data, Dict):
+        writer = csv.DictWriter(output, fieldnames=data.keys())
+        writer.writeheader()
+        writer.writerow(data)
+    else:
+        fieldnames = [
+            "date",
+            "temp",
+            "sensation",
+            "description",
+            "humidity",
+            "pressure",
+            "wind_speed",
+            "visibility",
+        ]
+        writer = csv.DictWriter(output, fieldnames=fieldnames)
+        writer.writeheader()
+        for d in data:
+            writer.writerow(d)
     return output.getvalue()
 
 
-def format_as_txt(data: Dict[str, Any]) -> str:
+def format_as_txt(data: Union[Dict[str, Any], List[Any]]) -> str:
     return "\n".join(f"{key.capitalize()}: {value}" for key, value in data.items())
 
 
