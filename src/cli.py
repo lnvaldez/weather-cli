@@ -35,17 +35,18 @@ def coordinate(
     forecast: bool = False,
     aqi: bool = False,
     sun: bool = False,
+    format: OutputFormat = OutputFormat.json,
 ):
     weather = Coordinate(lat=latitude, lon=longitude)
 
     if current:
-        print(weather.current_data)
+        print(output_format(data=weather.current_data, format_type=format))
     if forecast:
-        print(weather.forecast)
+        print(output_format(data=weather.forecast, format_type=format))
     if aqi:
-        print(weather.air_quality)
+        print(output_format(data=weather.air_quality, format_type=format))
     if sun:
-        print(weather.sun_data)
+        print(output_format(data=weather.sun_data, format_type=format))
 
 
 if __name__ == "__main__":
