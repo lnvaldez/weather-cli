@@ -1,5 +1,6 @@
 import os
 import requests
+import sys
 from dotenv import load_dotenv
 from typing import Dict, Any
 from requests.exceptions import HTTPError
@@ -25,7 +26,7 @@ class WeatherApi:
             response.raise_for_status()
             return response.json()
         except HTTPError as errh:
-            handle_http_error(error=errh)
+            sys.exit(handle_http_error(error=errh))
 
     @classmethod
     def get_weather_by_city(self, city: str) -> Dict[str, Any]:
