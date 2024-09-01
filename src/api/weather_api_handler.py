@@ -4,7 +4,7 @@ import sys
 from dotenv import load_dotenv
 from typing import Dict, Any
 from requests.exceptions import HTTPError
-from error_handling import handle_http_error
+from src.utils.error_handling import handle_http_error
 
 load_dotenv()
 

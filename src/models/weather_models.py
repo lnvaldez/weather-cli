@@ -1,6 +1,6 @@
 from typing import Dict, Any
 from datetime import datetime
-from weather_api_handler import WeatherApi
+from src.api.weather_api_handler import WeatherApi
 
 
 class WeatherBase:

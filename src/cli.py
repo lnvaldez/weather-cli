@@ -1,5 +1,5 @@
 import typer
-from weather_models import WeatherLocation, Coordinate
+from src.models.weather_models import WeatherLocation, Coordinate
 
 app = typer.Typer()
 
