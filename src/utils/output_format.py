@@ -4,6 +4,9 @@ import json
 from typing import Dict, List, Union, Any
 
 
+nl_nl = "\n\n"
+
+
 def format_as_json(data: Dict[str, Any]) -> str:
     return json.dumps(data, indent=4)
 
@@ -34,7 +37,13 @@ def format_as_csv(data: Union[Dict[str, Any], List[Any]]) -> str:
 
 
 def format_as_txt(data: Union[Dict[str, Any], List[Any]]) -> str:
-    return "\n".join(f"{key.capitalize()}: {value}" for key, value in data.items())
+    if isinstance(data, Dict):
+        return "\n".join(f"{key.capitalize()}: {value}" for key, value in data.items())
+    else:
+        return nl_nl.join(
+            "\n".join(f"{key.capitalize()}: {value}" for key, value in item.items())
+            for item in data
+        )
 
 
 def output_format(data: Dict[str, Any], format_type: str):
