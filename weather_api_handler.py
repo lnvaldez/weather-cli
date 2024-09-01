@@ -2,6 +2,8 @@ import os
 import requests
 from dotenv import load_dotenv
 from typing import Dict, Any
+from requests.exceptions import HTTPError
+from error_handling import handle_http_error
 
 load_dotenv()
 
@@ -18,8 +20,12 @@ class WeatherApi:
 
     @staticmethod
     def fetch_data(url: str) -> Dict[str, Any]:
-        response = requests.get(url)
-        return response.json()
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            return response.json()
+        except HTTPError as errh:
+            handle_http_error(error=errh)
 
     @classmethod
     def get_weather_by_city(self, city: str) -> Dict[str, Any]:
