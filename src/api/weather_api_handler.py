@@ -47,3 +47,8 @@ class API:
     def get_air_quality(self, lat: float, lon: float) -> Dict[str, Any]:
         url = f"{self.BASE_URLS['air']}appid={self.WEATHER_API_KEY}&lat={lat}&lon={lon}&units=metric"
         return self.fetch_data(url=url)
+
+    @classmethod
+    def get_reverse_gcs(self, lat: float, lon: float) -> Dict[str, Any]:
+        url = f"{self.BASE_URLS['geo']}key={self.GEO_API_KEY}&q={lat}%2C{lon}"
+        return self.fetch_data(url=url)
