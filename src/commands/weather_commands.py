@@ -67,10 +67,17 @@ def coordinate(
     sun: bool = False,
     format: OutputFormat = OutputFormat.json,
     target: Target = Target.terminal,
+    translate: bool = False,
 ):
     weather = Coordinate(lat=latitude, lon=longitude)
 
     if target == "terminal":
+        if translate:
+            print(
+                output_format(
+                    data=weather.reverse_gcs, format_type=format, target_output=target
+                )
+            )
         if current:
             print(
                 output_format(
@@ -96,6 +103,12 @@ def coordinate(
                 )
             )
     else:
+        if translate:
+            print(
+                output_format(
+                    data=weather.reverse_gcs, format_type=format, target_output=target
+                )
+            )
         if current:
             output_format(
                 data=weather.current_data, format_type=format, target_output=target
