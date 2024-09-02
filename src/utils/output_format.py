@@ -13,14 +13,13 @@ def output_format(data: Dict[str, Any], format_type: str, target_output: str):
             return format_as_json(data)
         elif format_type == "csv":
             return format_as_csv(data)
-        elif format_type == "txt":
-            return format_as_txt(data)
         else:
-            raise TypeError("Supported formats are: (json, csv, txt)")
+            return format_as_txt(data)
+
     else:
         if format_type == "json":
             write_to_json_file(data)
         elif format_type == "csv":
             write_to_csv_file(data)
-        elif format_type == "txt":
+        else:
             write_to_txt_file(data)
