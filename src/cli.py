@@ -6,7 +6,7 @@ app = typer.Typer()
 
 
 app.command()(location)
-app.command()(coordinate)
+app.command(context_settings={"ignore_unknown_options": True})(coordinate)
 app.command()(clear)
 
 
