@@ -9,7 +9,7 @@ from src.utils.error_handling import handle_http_error
 load_dotenv()
 
 
-class WeatherApi:
+class API:
     WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
     GEO_API_KEY = os.getenv("GEO_API_KEY")
     BASE_URLS = {
