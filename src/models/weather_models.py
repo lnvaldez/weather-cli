@@ -1,9 +1,9 @@
 from typing import Dict, Any
 from datetime import datetime
-from src.api.weather_api_handler import WeatherApi
+from src.api.weather_api_handler import API
 
 
-class WeatherBase:
+class Base:
     def __init__(self):
         self.current_data = {}
         self.forecast = {}
@@ -69,25 +69,25 @@ class WeatherBase:
         }
 
 
-class Location(WeatherBase):
+class Location(Base):
     def __init__(self, city_name: str):
         super().__init__()
         self.city_name = city_name
         self.fetch_all_data()
 
     def fetch_all_data(self):
-        current_data = WeatherApi.get_weather_by_city(self.city_name)
+        current_data = API.get_weather_by_city(self.city_name)
         self.lat = current_data["coord"]["lat"]
         self.lon = current_data["coord"]["lon"]
-        forecast_data = WeatherApi.get_forecast(self.lat, self.lon)
-        air_data = WeatherApi.get_air_quality(self.lat, self.lon)
+        forecast_data = API.get_forecast(self.lat, self.lon)
+        air_data = API.get_air_quality(self.lat, self.lon)
 
         self.process_current_data(current_data)
         self.process_forecast_data(forecast_data)
         self.process_air_data(air_data)
 
 
-class Coordinate(WeatherBase):
+class Coordinate(Base):
     def __init__(self, lat: float, lon: float):
         super().__init__()
         self.lat = lat
@@ -95,6 +95,6 @@ class Coordinate(WeatherBase):
         self.fetch_all_data()
 
     def fetch_all_data(self):
-        self.process_current_data(WeatherApi.get_weather_by_gcs(self.lat, self.lon))
-        self.process_forecast_data(WeatherApi.get_forecast(self.lat, self.lon))
-        self.process_air_data(WeatherApi.get_air_quality(self.lat, self.lon))
+        self.process_current_data(API.get_weather_by_gcs(self.lat, self.lon))
+        self.process_forecast_data(API.get_forecast(self.lat, self.lon))
+        self.process_air_data(API.get_air_quality(self.lat, self.lon))
