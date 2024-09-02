@@ -92,9 +92,19 @@ class Coordinate(Base):
         super().__init__()
         self.lat = lat
         self.lon = lon
+        self.reverse_gcs = {}
         self.fetch_all_data()
+
+    def process_gcs_data(self, data: Dict[str, Any]):
+        self.formatted = data["results"][0]["formatted"]
+        self.category = data["results"][0]["components"]["_category"]
+        self.reverse_gcs = {
+            "location": self.formatted,
+            "category": self.category,
+        }
 
     def fetch_all_data(self):
         self.process_current_data(API.get_weather_by_gcs(self.lat, self.lon))
         self.process_forecast_data(API.get_forecast(self.lat, self.lon))
         self.process_air_data(API.get_air_quality(self.lat, self.lon))
+        self.process_gcs_data(API.get_reverse_gcs(self.lat, self.lon))
