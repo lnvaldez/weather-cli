@@ -7,7 +7,7 @@ class WeatherBase:
     def __init__(self):
         self.current_data = {}
         self.forecast = {}
-        self.air_quality = None
+        self.air_quality = {}
         self.sun_data = {}
 
     def process_current_data(self, data: Dict[str, Any]):
@@ -54,7 +54,19 @@ class WeatherBase:
             self.forecast.append(forecast_entry)
 
     def process_air_data(self, data: Dict[str, Any]):
-        self.air_quality = data["list"][0]["main"]["aqi"]
+        qualitative_name = {
+            1: "Good",
+            2: "Fair",
+            3: "Moderate",
+            4: "Poor",
+            5: "Very Poor",
+        }
+        self.air_quality_index = data["list"][0]["main"]["aqi"]
+        self.air_quality_name = qualitative_name[self.air_quality_index]
+        self.air_quality = {
+            "Index": self.air_quality_index,
+            "Qualitative Name": self.air_quality_name,
+        }
 
 
 class WeatherLocation(WeatherBase):
