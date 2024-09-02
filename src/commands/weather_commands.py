@@ -14,30 +14,48 @@ def location(
 ):
     weather = WeatherLocation(city_name=city)
 
-    if current:
-        print(
+    if target == "terminal":
+        if current:
+            print(
+                output_format(
+                    data=weather.current_data, format_type=format, target_output=target
+                )
+            )
+        if forecast:
+            print(
+                output_format(
+                    data=weather.forecast, format_type=format, target_output=target
+                )
+            )
+        if aqi:
+            print(
+                output_format(
+                    data=weather.air_quality, format_type=format, target_output=target
+                )
+            )
+        if sun:
+            print(
+                output_format(
+                    data=weather.sun_data, format_type=format, target_output=target
+                )
+            )
+    else:
+        if current:
             output_format(
                 data=weather.current_data, format_type=format, target_output=target
             )
-        )
-    if forecast:
-        print(
+        if forecast:
             output_format(
                 data=weather.forecast, format_type=format, target_output=target
             )
-        )
-    if aqi:
-        print(
+        if aqi:
             output_format(
                 data=weather.air_quality, format_type=format, target_output=target
             )
-        )
-    if sun:
-        print(
+        if sun:
             output_format(
                 data=weather.sun_data, format_type=format, target_output=target
             )
-        )
 
 
 def coordinate(
@@ -52,27 +70,45 @@ def coordinate(
 ):
     weather = Coordinate(lat=latitude, lon=longitude)
 
-    if current:
-        print(
+    if target == "terminal":
+        if current:
+            print(
+                output_format(
+                    data=weather.current_data, format_type=format, target_output=target
+                )
+            )
+        if forecast:
+            print(
+                output_format(
+                    data=weather.forecast, format_type=format, target_output=target
+                )
+            )
+        if aqi:
+            print(
+                output_format(
+                    data=weather.air_quality, format_type=format, target_output=target
+                )
+            )
+        if sun:
+            print(
+                output_format(
+                    data=weather.sun_data, format_type=format, target_output=target
+                )
+            )
+    else:
+        if current:
             output_format(
                 data=weather.current_data, format_type=format, target_output=target
             )
-        )
-    if forecast:
-        print(
+        if forecast:
             output_format(
                 data=weather.forecast, format_type=format, target_output=target
             )
-        )
-    if aqi:
-        print(
+        if aqi:
             output_format(
                 data=weather.air_quality, format_type=format, target_output=target
             )
-        )
-    if sun:
-        print(
+        if sun:
             output_format(
                 data=weather.sun_data, format_type=format, target_output=target
             )
-        )
