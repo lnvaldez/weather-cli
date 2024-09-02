@@ -7,7 +7,7 @@ from typing import Dict, List, Union, Any
 nl_nl = "\n\n"
 
 
-def format_as_json(data: Dict[str, Any]) -> str:
+def format_as_json(data: Union[Dict[str, Any], List[Any]]) -> str:
     return json.dumps(data, indent=4)
 
 
