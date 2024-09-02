@@ -1,4 +1,4 @@
-from src.models.weather_models import WeatherLocation, Coordinate
+from src.models.weather_models import Location, Coordinate
 from src.utils.enum import OutputFormat, Target
 from src.utils.output_format import output_format
 
@@ -12,7 +12,7 @@ def location(
     format: OutputFormat = OutputFormat.json,
     target: Target = Target.terminal,
 ):
-    weather = WeatherLocation(city_name=city)
+    weather = Location(city_name=city)
 
     if target == "terminal":
         if current:
