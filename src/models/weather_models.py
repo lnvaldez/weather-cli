@@ -69,7 +69,7 @@ class WeatherBase:
         }
 
 
-class WeatherLocation(WeatherBase):
+class Location(WeatherBase):
     def __init__(self, city_name: str):
         super().__init__()
         self.city_name = city_name
