@@ -19,8 +19,8 @@ def output_format(data: Dict[str, Any], format_type: str, target_output: str):
             raise TypeError("Supported formats are: (json, csv, txt)")
     else:
         if format_type == "json":
-            write_to_json_file()
+            write_to_json_file(data)
         elif format_type == "csv":
-            write_to_csv_file()
+            write_to_csv_file(data)
         elif format_type == "txt":
-            write_to_txt_file()
+            write_to_txt_file(data)
