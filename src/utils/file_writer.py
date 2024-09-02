@@ -24,3 +24,15 @@ def write_to_txt_file(data: Union[Dict[str, Any], List[Any]]):
     formatted_data = format_as_txt(data)
     with open(txt_file, "a+") as file:
         file.write(formatted_data)
+
+
+def clear_file(file: str):
+    if file == "json":
+        with open(json_file, "w") as file:
+            file.truncate(0)
+    elif file == "csv":
+        with open(csv_file, "w") as file:
+            file.truncate(0)
+    else:
+        with open(txt_file, "w") as file:
+            file.truncate(0)
