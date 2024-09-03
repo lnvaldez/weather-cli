@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-echo Installing requirements
+echo "Installing requirements"
 pip install -r requirements.txt
