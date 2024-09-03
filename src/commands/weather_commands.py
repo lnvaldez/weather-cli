@@ -104,10 +104,8 @@ def coordinate(
             )
     else:
         if translate:
-            print(
-                output_format(
-                    data=weather.reverse_gcs, format_type=format, target_output=target
-                )
+            output_format(
+                data=weather.reverse_gcs, format_type=format, target_output=target
             )
         if current:
             output_format(
