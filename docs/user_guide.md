@@ -10,8 +10,7 @@ This guide provides instructions on how to use the Weather CLI application to re
    - [location](#location)
    - [coordinate](#coordinate)
 4. [Options](#options)
-5. [Output Formats](#output-formats)
-6. [Examples](#examples)
+5. [Examples](#examples)
 
 ## Installation
 
