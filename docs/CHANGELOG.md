@@ -1,5 +1,13 @@
 # Changelog
 
+# 1.1.0 - 2024-09-09
+
+### Added
+
+- **Documentation:** Introduced project documentation, including user guides, API references, and contribution guidelines.
+- **License:** Added MIT license to the project.
+- **Testing:** Implemented testing for API functionality.
+
 ## 1.1.0-beta - 2024-09-03
 
 ### Added
